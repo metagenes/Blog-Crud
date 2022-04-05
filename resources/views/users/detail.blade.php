@@ -53,37 +53,6 @@
                   </div>
                 </div>
 
-                <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Role') }}</label>
-                  <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('role') ? ' has-danger' : '' }}">
-                    <input class="form-control{{ $errors->has('urlcallback') ? ' is-invalid' : '' }}" name="phone" id="input-phone" type="phone" placeholder="" value="{{ $user->role }}" readonly />
-                    <!-- select list VA Service -->
-                        <!-- <select class="form-control" name="role" id="role">
-                            <option value="">Select Role</option>
-                            <option value="administrator">Administrator</option>
-                            <option value="manager">Manager</option>                        
-                            <option value="user">User</option>
-                        </select> -->
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Company') }}</label>
-                  <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('role') ? ' has-danger' : '' }}">
-                    <input class="form-control{{ $errors->has('urlcallback') ? ' is-invalid' : '' }}" name="phone" id="input-phone" type="phone" placeholder="" value="{{ $userMerchant->name }}" readonly />
-                    <!-- select list VA Service -->
-                        <!-- <select class="form-control" name="company" id="company">
-                            <option value="">Select Company</option>
-                            <option value="1">Digidata</option>
-                            <option value="2">Verijelas</option>
-                            <option value="3">PT Karya Indah Sejahtera</option>
-                        </select> -->
-                    </div>
-                  </div>
-                </div>
                 
               </div>
             </div>

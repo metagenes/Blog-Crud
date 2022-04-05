@@ -54,40 +54,6 @@
                   </div>
                 </div>
 
-                <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Role') }}</label>
-                  <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('role') ? ' has-danger' : '' }}">
-                    <!-- select list VA Service -->
-                        <select class="form-control" name="role" id="role">
-                            <option value="">Select Role</option>
-                            <option value="{{$user->role}}" selected>{{ ucfirst($user->role) }}</option>
-                            @if ($user->role == 'superadmin')
-                                <option value="user">User</option>
-                            @endif
-                        </select>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Company') }}</label>
-                  <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('role') ? ' has-danger' : '' }}">
-                    <!-- select list VA Service -->
-                        <select class="form-control" name="company" id="company">
-                            <option value="">Select Company</option>
-                              <option value="{{$dataMerchant->merchant_id}}" selected>{{$dataMerchant->name}}</option>
-                            @foreach($merchantList as $merchant)
-                            @if ($merchant->name != $dataMerchant->name)
-                              <option value="{{ $merchant->merchant_id }}"> {{ $merchant->name }}</option>
-                            @endif
-                            @endforeach
-                        </select>
-                    </div>
-                  </div>
-                </div>
-                
               </div>
               <div class="card-footer ml-auto mr-auto">
                 <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>

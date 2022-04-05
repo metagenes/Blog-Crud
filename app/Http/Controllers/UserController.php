@@ -5,14 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
-use App\Models\MerchantModel;
 use Ramsey\Uuid\Uuid;
 
 class UserController extends Controller
 {
     public function __construct()
     {
-        $this->merchantModel = new MerchantModel();
         $this->userModel = new User();
     }
     /**
@@ -25,16 +23,15 @@ class UserController extends Controller
     {
         $users = $this->userModel->get();
 
-        return view('users.list', ['users' => $users]);
+        return view('users.index', ['users' => $users]);
     }
 
     public function show($id)
     {
         // TODO error handling using try catch
-        $user = $this->userModel->where('user_id',$id)->get()->first();
-        $userMerchant = $this->merchantModel->where('merchant_id',$user->merchant_id)->get()->first();
+        $user = $this->userModel->where('user_id',$id)->first();
 
-        return view('users.detail', ['user' => $user, 'userMerchant' => $userMerchant]);
+        return view('users.detail', ['user' => $user]);
     }
 
     public function create()
@@ -67,18 +64,14 @@ class UserController extends Controller
     public function detail($id)
     {
         $user = User::find($id);
-        dd($user);
         return view('users.detail');
     }
 
     public function edit($id)
     {
-        $user = $this->userModel->where('user_id',$id)->get()->first();
+        $user = $this->userModel->where('user_id',$id)->first();
 
-        $dataMerchant = $this->merchantModel->where('merchant_id',$user->merchant_id)->get()->first();
-        $merchantList = $this->merchantModel->get();
-        // dd($dataMerchant);
-        return view('users.edit', ['user' => $user, 'merchantList' => $merchantList, 'dataMerchant' => $dataMerchant]);
+        return view('users.edit', ['user' => $user]);
     }
 
     public function update($id)
@@ -90,7 +83,7 @@ class UserController extends Controller
             $data['phone_number'] = $data['phone'];
             $data['updated_by'] = auth()->user()->id;
     
-            $user = $this->userModel->where('id',$id)->get()->first();
+            $user = $this->userModel->where('id',$id)->first();
             $user->update($data);
     
             return redirect()->route('user.index')->withStatus(__('User successfully updated.'));    
