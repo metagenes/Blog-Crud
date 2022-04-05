@@ -36,10 +36,12 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('article', 'App\Http\Controllers\ArticleController');
 	Route::resource('category', 'App\Http\Controllers\CategoryController');
 	Route::get('deletecategory/{id}', 'App\Http\Controllers\CategoryController@destroy')->name('category.destroy');
+	Route::get('deletearticle/{id}', 'App\Http\Controllers\ArticleController@destroy')->name('article.destroy');
+	Route::get('deleteuser/{id}', 'App\Http\Controllers\UserController@destroy')->name('user.destroy');
 
 	// Route::get('{slug-category}', ['as' => 'category.list', 'uses' => 'App\Http\Controllers\CategoryController@list']);
-	Route::get('{category}', 'App\Http\Controllers\CategoryController@list')->name('category.list');
-	Route::get('{category}/{article}', 'App\Http\Controllers\ArticleController@list')->name('news.detail');
+	Route::get('/news/{category}', 'App\Http\Controllers\CategoryController@list')->name('category.list');
+	Route::get('/news/{category}/{article}', 'App\Http\Controllers\ArticleController@list')->name('news.detail');
 
 	Route::resource('administrator', 'App\Http\Controllers\AdministratorController');
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);

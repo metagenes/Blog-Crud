@@ -109,7 +109,11 @@ class CategoryController extends Controller
         try {
             $category = category::where('slug', $slug)->first();
             $article = article::where('category_id',$category->id)->get();
-            return view('news.list', compact('article'));    
+            if ($article->isNotEmpty()) {
+                return view('news.detail', compact('article'));    
+            } else {
+                return view('news.index')->withErrors(['error' => 'Article not found']);
+            }
         } catch (\Throwable $th) {
             return redirect()->route('news.index')->withStatus(__('category news is empty'));
         }
