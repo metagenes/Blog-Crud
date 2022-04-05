@@ -21,9 +21,6 @@
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
             <a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __('Profile') }}</a>
-            @if(Auth::user()->role == 'superadmin')
-            <a class="dropdown-item" href="{{ route('administrator.index')}}">{{ __('VA Settings') }}</a>
-            @endif
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Log out') }}</a>
           </div>

@@ -15,6 +15,10 @@ composer install
 Create .env from .env example
 
 ```bash
+php artisan key:generate
+```
+
+```bash
 php artisan migrate
 ```
 ```bash
