@@ -9,7 +9,6 @@
                 <div class="card">
                     <div class="card-header card-header-primary">
                         <h4 class="card-title ">Latest 5 Post</h4>
-                        <p class="card-category"> Here is a subtitle for this table</p>
                     </div>
                     <div class="card-body">
                     @foreach ($article as $item)

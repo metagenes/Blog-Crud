@@ -30,7 +30,7 @@
           <ul class="nav">
             <li class="nav-item{{ $activePage == 'Article' ? ' active' : '' }}">
               <a class="nav-link" href="{{ route('article.index')}}">
-                <i class="material-icons">settings</i>
+                <i class="material-icons">books</i>
                 <span class="sidebar-normal">{{ __('Article') }} </span>
               </a>
             </li>

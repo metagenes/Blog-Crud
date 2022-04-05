@@ -61,7 +61,7 @@ class CategoryController extends Controller
 
         } catch (\Throwable $th) {
             //throw $th;
-            return redirect('category.index')->withErrors(['error' => $th->getMessage()]);
+            return redirect()->route('category.index')->withErrors(['error' => $th->getMessage()]);
         }
         
     }
@@ -93,7 +93,7 @@ class CategoryController extends Controller
 
         } catch (\Throwable $th) {
             //throw $th;
-            return redirect('category.index')->withStatus(__('category has been updated'));
+            return redirect()->route('category.index')->withStatus(__('category has been updated'));
         }
     }
 
@@ -101,7 +101,7 @@ class CategoryController extends Controller
     {
         $category = category::where('id', $id)->first();
         $category->delete();
-        return view('category.index')->withErrors(['success' => 'category has been deleted']);
+        return redirect()->route('category.index')->withErrors(['success' => 'category has been deleted']);
     }
 
     public function list($slug)
@@ -111,7 +111,7 @@ class CategoryController extends Controller
             $article = article::where('category_id',$category->id)->get();
             return view('news.list', compact('article'));    
         } catch (\Throwable $th) {
-            return redirect('news.index')->withStatus(__('category news is empty'));
+            return redirect()->route('news.index')->withStatus(__('category news is empty'));
         }
     }
 }

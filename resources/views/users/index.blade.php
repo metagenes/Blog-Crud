@@ -52,6 +52,11 @@
                           <i class="material-icons">delete</i>
                         </form>
                         </a>   -->
+                        <td class="td-actions text-right">
+                        <a rel="tooltip" class="btn btn-danger btn-link" href="{{url('deleteuser/'.$user->id)}}" onclick="return confirm('Are you sure to delete this data?');">
+                        <i class="material-icons">delete</i>
+                      </a>
+
                         <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('user.edit', $user->user_id) }}" data-original-title="" title="">
                           <i class="material-icons">edit</i>
                           <div class="ripple-container"></div>

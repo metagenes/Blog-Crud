@@ -56,7 +56,6 @@ class UserController extends Controller
             return redirect()->route('user.index')->withStatus(__('User successfully created.'));    
         } catch (\Throwable $th) {
             //throw $th;
-            dd($th->getMessage());
             return redirect()->route('user.index')->withStatus(__('User failed to create.'));
         }
     }
@@ -91,5 +90,12 @@ class UserController extends Controller
             //throw $th;
             return redirect()->route('user.index')->withStatus(__('User failed to update.'));
         }
+    }
+
+    public function destroy($id)
+    {
+        $user = User::where('id', $id);
+        $user->delete();
+        return redirect()->route('user.index')->withErrors(['success' => 'User has been deleted']);
     }
 }

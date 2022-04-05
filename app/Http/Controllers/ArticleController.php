@@ -73,12 +73,11 @@ class ArticleController extends Controller
             $article->save();
 
             // return redirect with message
-            return redirect('article.index')->withErrors(['success' => 'Article has been created']);
+            return redirect()->route('article.index')->withErrors(['success' => 'Article has been created']);
 
         } catch (\Throwable $th) {
             //throw $th;
-            dd($th->getMessage());
-            return redirect('article.index')->withErrors(['error' => $th->getMessage()]);
+            return redirect()->route('article.index')->withErrors(['error' => $th->getMessage()]);
         }
         
     }
@@ -118,11 +117,11 @@ class ArticleController extends Controller
             $article->save();
 
             // return redirect with message
-            return redirect('article.index')->withErrors(['success' => 'Article has been updated']);
+            return redirect()->route('article.index')->withErrors(['success' => 'Article has been updated']);
 
         } catch (\Throwable $th) {
             //throw $th;
-            return redirect('article.index')->withErrors(['error' => $th->getMessage()]);
+            return redirect()->route('article.index')->withErrors(['error' => $th->getMessage()]);
         }
     }
 
@@ -130,7 +129,7 @@ class ArticleController extends Controller
     {
         $article = Article::where('article_id', $id);
         $article->delete();
-        return redirect('article.index')->withErrors(['success' => 'Article has been deleted']);
+        return redirect()->route('article.index')->withErrors(['success' => 'Article has been deleted']);
     }
 
     public function list($slugCategory, $slugArticle)
@@ -143,7 +142,7 @@ class ArticleController extends Controller
                 return view('news.index')->withErrors(['error' => 'Article not found']);
             }
         } catch (\Throwable $th) {
-            return redirect('news.index')->withErrors(['errors', 'Article not found']);
+            return redirect()->route('news.index')->withErrors(['errors', 'Article not found']);
         }
     }
 }

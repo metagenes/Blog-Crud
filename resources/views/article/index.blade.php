@@ -41,7 +41,7 @@
                       </td>
 
                       <td class="td-actions text-right">
-                        <a rel="tooltip" class="btn btn-danger btn-link" href="{{ route('article.destroy', $article->article_id) }}" onclick="return confirm('Are you sure to delete this data?');">
+                        <a rel="tooltip" class="btn btn-danger btn-link" href="{{url('deletearticle/'.$article->article_id)}}" onclick="return confirm('Are you sure to delete this data?');">
                         <i class="material-icons">delete</i>
                       </a>
 
